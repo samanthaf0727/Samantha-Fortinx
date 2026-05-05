@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Minimalist Counter</title>
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect">
+  <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Public+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ec5b13",
+            "background-light": "#f8f6f6",
+            "background-dark": "#221610",
+          },
+          fontFamily: {
+            "display": ["Public Sans"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Public Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background-light text-background-dark font-display h-screen flex flex-col items-center justify-center m-0">
+  <div class="w-full max-w-md p-8 flex flex-col items-center gap-12">
+    <h1 id="counter" class="text-9xl font-bold tracking-tight text-background-dark">0</h1>
+    <div class="flex gap-6 w-full justify-center">
+      <button id="decrement" class="flex items-center justify-center w-20 h-20 rounded-full bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-200">
+        <span class="material-symbols-outlined text-4xl">remove</span>
+      </button>
+      <button id="increment" class="flex items-center justify-center w-20 h-20 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors duration-200 shadow-md">
+        <span class="material-symbols-outlined text-4xl">add</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const counterEl = document.getElementById('counter');
+      const decrementBtn = document.getElementById('decrement');
+      const incrementBtn = document.getElementById('increment');
+
+      let count = 0;
+
+      function updateDisplay() {
+        counterEl.textContent = count;
+      }
+
+      function increment() {
+        count++;
+        updateDisplay();
+      }
+
+      function decrement() {
+        count--;
+        updateDisplay();
+      }
+
+      incrementBtn.addEventListener('click', increment);
+      decrementBtn.addEventListener('click', decrement);
+
+      updateDisplay();
+    })();
+  </script>
+</body>
+</html>
